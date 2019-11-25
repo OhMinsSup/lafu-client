@@ -1,3 +1,4 @@
+/* eslint-disable */
 'use strict';
 
 const fs = require('fs');
@@ -26,6 +27,9 @@ const ModuleNotFoundPlugin = require('react-dev-utils/ModuleNotFoundPlugin');
 const ForkTsCheckerWebpackPlugin = require('react-dev-utils/ForkTsCheckerWebpackPlugin');
 const typescriptFormatter = require('react-dev-utils/typescriptFormatter');
 const eslint = require('eslint');
+
+const LoadablePlugin = require('@loadable/webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const postcssNormalize = require('postcss-normalize');
 
@@ -502,6 +506,8 @@ module.exports = function(webpackEnv) {
     },
     plugins: [
       // Generates an `index.html` file with the <script> injected.
+      new BundleAnalyzerPlugin(),
+      new LoadablePlugin(),
       new HtmlWebpackPlugin(
         Object.assign(
           {},
