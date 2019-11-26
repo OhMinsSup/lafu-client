@@ -3,10 +3,10 @@ import user from './user';
 import error from './error';
 
 const rootReducer = combineReducers({
-    user,
-    error
-})
+  user,
+  error,
+});
 
-export type StortState = ReturnType<typeof rootReducer>
+export type StortState = ReturnType<typeof rootReducer>;
 
-export default rootReducer
+export default rootReducer;

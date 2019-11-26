@@ -1,26 +1,26 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Switch, Route } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { StortState } from './store/modules';
+import loadable from '@loadable/component';
 
-const App: React.FC = () => {
+const LandingPage = loadable(() => import('./pages/LandingPage'));
+
+const App = () => {
+  const isLoggedIn = useSelector((state: StortState) => state.user.isLoggedIn);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <React.Fragment>
+      {isLoggedIn ? <LoggedInRoutes /> : <LoggedOutRoutes />}
+    </React.Fragment>
   );
-}
+};
+
+const LoggedOutRoutes = () => (
+  <Switch>
+    <Route exact path="/" component={LandingPage} />
+  </Switch>
+);
+
+const LoggedInRoutes = () => <div>로그인중</div>;
 
 export default App;
