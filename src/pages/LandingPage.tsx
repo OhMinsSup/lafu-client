@@ -1,14 +1,14 @@
 import React from 'react';
 import { useHistory } from 'react-router';
 import LandingTemplate from '../components/landing/LandingTemplate';
-import LandingFrom from '../components/landing/LandingForm';
+import LandingFormContainer from '../containers/auth/LandingFormContainer';
 
 interface LandingPageProps {}
 const LandingPage = ({  }: LandingPageProps) => {
   const history = useHistory();
   return (
     <LandingTemplate>
-      <LandingFrom history={history} />
+      <LandingFormContainer history={history} />
     </LandingTemplate>
   );
 };
