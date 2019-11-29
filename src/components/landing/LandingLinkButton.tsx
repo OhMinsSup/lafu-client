@@ -8,26 +8,36 @@ const LandingLinkButtonBlock = styled.div`
   font-size: 1rem;
   font-weight: 600;
   color: white;
-
-  .link {
+  border: none;
+  & > .btn {
+    background: transparent;
+    border: none;
     text-decoration: none;
     color: white;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+  & > .link {
+    text-decoration: none;
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
   }
 `;
 
 interface LandingLinkButtonProps {
-  loginLink: string;
   registerLink: string;
+  onToggle: () => void;
 }
 const LandingLinkButton = ({
-  loginLink,
+  onToggle,
   registerLink,
 }: LandingLinkButtonProps) => {
   return (
     <LandingLinkButtonBlock>
-      <Link className="link" to={loginLink} style={{ marginRight: '8px' }}>
+      <button className="btn" onClick={onToggle} style={{ marginRight: '8px' }}>
         이메일로 로그인
-      </Link>
+      </button>
       /
       <Link className="link" to={registerLink} style={{ marginLeft: '8px' }}>
         회원가입

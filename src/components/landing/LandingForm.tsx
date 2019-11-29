@@ -71,9 +71,14 @@ const LandingFrom = ({ history }: LandingFromProps) => {
   const [toggle, setToggle] = useState(true);
   const [visible, setVisible] = useState(false);
 
-  const onToggle = useCallback(() => {
+  const onSocialToggle = useCallback(() => {
     setVisible(false);
     setToggle(false);
+  }, [setToggle, setVisible]);
+
+  const onEmailToggle = useCallback(() => {
+    setVisible(false);
+    setToggle(true);
   }, [setToggle, setVisible]);
 
   const onLink = useCallback(() => {
@@ -101,13 +106,13 @@ const LandingFrom = ({ history }: LandingFromProps) => {
             <LandingLoginButton
               types="social"
               toggle={toggle}
-              onToggle={onToggle}
+              onToggle={onSocialToggle}
               text={'다른 계정으로 로그인'}
             />
           ) : (
             <SocialLoginButtonGroup visible={!visible} />
           )}
-          <LandingLink loginLink="/email-login" registerLink="/register" />
+          <LandingLink onToggle={onEmailToggle} registerLink="/register" />
         </section>
       </div>
     </LandingFromBlock>

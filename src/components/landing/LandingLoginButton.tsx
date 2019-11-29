@@ -1,6 +1,7 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import palette from '../../lib/styles/palette';
+import transitions from '../../lib/styles/transitions';
 
 type RegistType = 'email' | 'social';
 
@@ -30,6 +31,15 @@ const LandingLoginButtonBlock = styled.button<{
     font-size: 1.15em;
     font-weight: 600;
   }
+
+  ${props =>
+    props.toggle
+      ? css`
+          animation: ${transitions.fadeIn} 0.5s forwards ease-in-out;
+        `
+      : css`
+          animation: ${transitions.fadeOut} 0.5s forwards ease-in-out;
+        `}
 
   ${props =>
     props.types === 'email'
