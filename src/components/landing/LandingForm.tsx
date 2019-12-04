@@ -76,11 +76,6 @@ const LandingFrom = ({ history }: LandingFromProps) => {
     setToggle(false);
   }, [setToggle, setVisible]);
 
-  const onEmailToggle = useCallback(() => {
-    setVisible(false);
-    setToggle(true);
-  }, [setToggle, setVisible]);
-
   const onLink = useCallback(() => {
     history.push('/email-login');
   }, [history]);
@@ -112,7 +107,7 @@ const LandingFrom = ({ history }: LandingFromProps) => {
           ) : (
             <SocialLoginButtonGroup visible={!visible} />
           )}
-          <LandingLink onToggle={onEmailToggle} registerLink="/register" />
+          <LandingLink emailLink="/email-login" registerLink="/register" />
         </section>
       </div>
     </LandingFromBlock>
