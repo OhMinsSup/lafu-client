@@ -5,7 +5,6 @@ import { StortState } from './store/modules';
 import loadable from '@loadable/component';
 
 const LandingPage = loadable(() => import('./pages/LandingPage'));
-const EmailLoginPage = loadable(() => import('./pages/EmailLoginPage'));
 
 const App = () => {
   const isLoggedIn = useSelector((state: StortState) => state.user.isLoggedIn);
@@ -19,7 +18,6 @@ const App = () => {
 const LoggedOutRoutes = () => (
   <Switch>
     <Route exact path="/" component={LandingPage} />
-    <Route path="/email-login" component={EmailLoginPage} />
   </Switch>
 );
 

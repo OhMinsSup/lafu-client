@@ -1,53 +1,64 @@
-import React from 'react';
+import * as React from 'react';
 import styled from 'styled-components';
+import EmailForm from './EmailForm';
 import palette from '../../lib/styles/palette';
 
 const EmailLoginFormBlock = styled.div`
-  display: flex !important;
-  flex-wrap: wrap !important;
-  flex-direction: row !important;
-  width: 1200px;
-  margin: auto;
-  position: relative;
-  justify-content: space-between !important;
-
-  h1 {
-    font-weight: 400;
-    font-size: 25px;
-    line-height: 1.4;
-    color: ${palette.gray8};
-    margin-bottom: 20px;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: space-between;
+  line-height: 1.5;
+  h2,
+  h4 {
+    margin: 0;
   }
-
-  .login-wrapper {
-    width: 552px;
-    padding: 0 37px;
-
-    @media (max-width: 1200px) and (min-width: 1024px) {
-      width: 60%;
-      margin-right: 20px;
-      padding: 0;
+  h2 {
+    font-size: 1.3125rem;
+    color: ${palette.gray8};
+  }
+  h4 {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    color: ${palette.gray6};
+  }
+  section + section {
+    margin-top: 2.5rem;
+  }
+  .foot {
+    text-align: right;
+    span {
+      margin-right: 0.25rem;
     }
-    @media (max-width: 964px) {
-      width: 90%;
-      margin-bottom: 40px;
-      padding: 0 20px;
-    }
-
-    @media (max-width: 767px) {
-      width: 100%;
-      padding: 0;
+    .link {
+      display: inline-block;
+      font-weight: bold;
+      color: ${palette.teal6};
+      cursor: pointer;
+      &:hover {
+        text-decoration: underline;
+      }
     }
   }
 `;
 
-interface EmailLoginFormProps {}
+export interface EmailLoginFormProps {}
 
 const EmailLoginForm = ({  }: EmailLoginFormProps) => {
   return (
     <EmailLoginFormBlock>
-      <div className="login-wrapper">
-        <h1 className="login-header">이메일로 로그인</h1>
+      <div>
+        <h2 data-testid="title">로그인</h2>
+        <section>
+          <h4>이메일로 로그인</h4>
+          <EmailForm
+            value=""
+            onChange={() => ({})}
+            onSubmit={() => ({})}
+            mode="LOGIN"
+            disabled={false}
+          />
+        </section>
       </div>
     </EmailLoginFormBlock>
   );
