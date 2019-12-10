@@ -2,18 +2,18 @@ import * as React from 'react';
 import styled from 'styled-components';
 import palette from '../../lib/styles/palette';
 
-const EmailFormBlock = styled.form`
+const EmailInputBlock = styled.form`
   width: 100%;
   display: flex;
   height: 3rem;
+  margin-bottom: 1rem;
   input {
     flex: 1;
-    border-top-left-radius: 2px;
-    border-bottom-left-radius: 2px;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
     padding: 1rem;
     font-size: 1rem;
     border: 1px solid ${palette.gray3};
-    border-right: none;
     &::placeholder {
       color: ${palette.gray6};
     }
@@ -24,14 +24,14 @@ const EmailFormBlock = styled.form`
   button {
     padding-left: 0.75rem;
     padding-right: 0.75rem;
-    background: ${palette.teal6};
+    background: ${palette.teal20};
     color: white;
     font-size: 1rem;
     font-weight: bold;
     outline: none;
     border: none;
-    border-top-right-radius: 2px;
-    border-bottom-right-radius: 2px;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
     width: 5rem;
     cursor: pointer;
     &:hover,
@@ -46,7 +46,7 @@ const EmailFormBlock = styled.form`
   }
 `;
 
-interface EmailFormProps {
+interface EmailInputProps {
   value: string;
   mode: 'REGISTER' | 'LOGIN';
   disabled: boolean;
@@ -54,15 +54,15 @@ interface EmailFormProps {
   onSubmit: (value: string) => void;
 }
 
-const EmailForm = ({
+const EmailInput = ({
   onChange,
   value,
   onSubmit,
   mode,
   disabled,
-}: EmailFormProps) => {
+}: EmailInputProps) => {
   return (
-    <EmailFormBlock
+    <EmailInputBlock
       onSubmit={e => {
         e.preventDefault();
         onSubmit(value);
@@ -78,8 +78,8 @@ const EmailForm = ({
       <button tabIndex={3} disabled={disabled}>
         {mode === 'REGISTER' ? '회원가입' : '로그인'}
       </button>
-    </EmailFormBlock>
+    </EmailInputBlock>
   );
 };
 
-export default EmailForm;
+export default EmailInput;

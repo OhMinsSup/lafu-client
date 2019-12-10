@@ -7,6 +7,7 @@ import SocialLoginButtonGroup from './SocialLoginButtonGroup';
 import LandingLink from './LandingLinkButton';
 import palette from '../../lib/styles/palette';
 import transitions from '../../lib/styles/transitions';
+import EmailInput from './EmailInput';
 
 const LandingFromBlock = styled.div<{ visible: boolean }>`
   display: flex;
@@ -68,17 +69,24 @@ interface LandingFromProps {
   history: History<any>;
 }
 const LandingFrom = ({ history }: LandingFromProps) => {
+  const [emailToggle, setEmailToggle] = useState(false);
   const [toggle, setToggle] = useState(true);
   const [visible, setVisible] = useState(false);
+
+  const onEmailToggle = useCallback(() => {
+    setEmailToggle(true);
+  }, [setEmailToggle]);
+
+  const onResetToggle = useCallback(() => {
+    setEmailToggle(false);
+    setToggle(true);
+  }, [setEmailToggle, setToggle]);
 
   const onSocialToggle = useCallback(() => {
     setVisible(false);
     setToggle(false);
-  }, [setToggle, setVisible]);
-
-  const onLink = useCallback(() => {
-    history.push('/email-login');
-  }, [history]);
+    setEmailToggle(false)
+  }, [setToggle, setVisible, setEmailToggle]);
 
   return (
     <LandingFromBlock visible={visible}>
@@ -88,11 +96,20 @@ const LandingFrom = ({ history }: LandingFromProps) => {
           <h4>여행을 여행답게</h4>
         </section>
         <section className="btn-wrapper">
-          {toggle ? (
+          {emailToggle && (
+            <EmailInput
+              value=""
+              mode="LOGIN"
+              disabled={false}
+              onChange={() => ({})}
+              onSubmit={() => ({})}
+            />
+          )}
+          {!emailToggle && toggle ? (
             <LandingLoginButton
               types="email"
               toggle={toggle}
-              onToggle={onLink}
+              onToggle={onEmailToggle}
               icon={<EmailIcon />}
               text={'이메일로 로그인'}
             />
@@ -107,7 +124,7 @@ const LandingFrom = ({ history }: LandingFromProps) => {
           ) : (
             <SocialLoginButtonGroup visible={!visible} />
           )}
-          <LandingLink emailLink="/email-login" registerLink="/register" />
+          <LandingLink onToggle={onResetToggle} />
         </section>
       </div>
     </LandingFromBlock>
