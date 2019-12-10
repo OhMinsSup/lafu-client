@@ -10,11 +10,11 @@ interface LandingFormContainerProps {
 }
 
 const LandingFormContainer = ({ history }: LandingFormContainerProps) => {
-  const [_sendAuthEmail, loading, data, resetSendAuthEmail] = useRequest<
+  const [_sendAuthEmail, loading, data, code] = useRequest<
     SendAuthEmailResponse
   >(sendAuthEmail);
 
-  const registered = data && data.payload.registered;
+  const registered = code === 200 ? data && data.payload.registered : null;
 
   const onSendAuthEmail = useCallback(
     async (email: string) => {
@@ -22,15 +22,14 @@ const LandingFormContainer = ({ history }: LandingFormContainerProps) => {
     },
     [_sendAuthEmail],
   );
+
   return (
-    <React.Fragment>
-      <LandingFrom
-        loading={loading}
-        registered={registered}
-        onSendAuthEmail={onSendAuthEmail}
-        history={history}
-      />
-    </React.Fragment>
+    <LandingFrom
+      loading={loading}
+      registered={registered}
+      onSendAuthEmail={onSendAuthEmail}
+      history={history}
+    />
   );
 };
 

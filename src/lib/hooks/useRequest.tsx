@@ -6,6 +6,7 @@ type UseRequestReturnType<R> = [
   Function,
   boolean,
   R | null,
+  number | null,
   Error | null,
   () => void,
 ];
@@ -15,6 +16,7 @@ export default function useRequest<R = any>(
 ): UseRequestReturnType<R> {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState<R | null>(null);
+  const [code, setCode] = useState<number | null>(null);
   const [error, setError] = useState<Error | null>(null);
 
   const onRequest = useCallback(
@@ -23,6 +25,7 @@ export default function useRequest<R = any>(
         setLoading(true);
         const response = await promiseCreator(...params);
         setData(response.data);
+        setCode(response.status);
       } catch (e) {
         setError(e);
         throw e;
@@ -39,5 +42,5 @@ export default function useRequest<R = any>(
     setError(null);
   };
 
-  return [onRequest, loading, data, error, onReset];
+  return [onRequest, loading, data, code, error, onReset];
 }

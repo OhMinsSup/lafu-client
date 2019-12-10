@@ -78,7 +78,10 @@ const LandingFrom = ({
   onSendAuthEmail,
   registered,
 }: LandingFromProps) => {
+  // email 입력
   const [email, onChangeEmail] = useInput('');
+
+  // email form toggle state
   const [emailToggle, setEmailToggle] = useState(false);
   const [toggle, setToggle] = useState(true);
   const [visible, setVisible] = useState(false);
