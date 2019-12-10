@@ -8,6 +8,8 @@ import LandingLink from './LandingLinkButton';
 import palette from '../../lib/styles/palette';
 import transitions from '../../lib/styles/transitions';
 import EmailInput from './EmailInput';
+import useInput from '../../lib/hooks/useInput';
+import EmailSuccess from './EmailSuccess';
 
 const LandingFromBlock = styled.div<{ visible: boolean }>`
   display: flex;
@@ -66,9 +68,17 @@ const LandingFromBlock = styled.div<{ visible: boolean }>`
 `;
 
 interface LandingFromProps {
+  loading: boolean;
+  registered: boolean | null;
   history: History<any>;
+  onSendAuthEmail: (email: string) => void;
 }
-const LandingFrom = ({ history }: LandingFromProps) => {
+const LandingFrom = ({
+  loading,
+  onSendAuthEmail,
+  registered,
+}: LandingFromProps) => {
+  const [email, onChangeEmail] = useInput('');
   const [emailToggle, setEmailToggle] = useState(false);
   const [toggle, setToggle] = useState(true);
   const [visible, setVisible] = useState(false);
@@ -85,8 +95,12 @@ const LandingFrom = ({ history }: LandingFromProps) => {
   const onSocialToggle = useCallback(() => {
     setVisible(false);
     setToggle(false);
-    setEmailToggle(false)
+    setEmailToggle(false);
   }, [setToggle, setVisible, setEmailToggle]);
+
+  const onSubmit = (email: string) => {
+    onSendAuthEmail(email);
+  };
 
   return (
     <LandingFromBlock visible={visible}>
@@ -97,13 +111,19 @@ const LandingFrom = ({ history }: LandingFromProps) => {
         </section>
         <section className="btn-wrapper">
           {emailToggle && (
-            <EmailInput
-              value=""
-              mode="LOGIN"
-              disabled={false}
-              onChange={() => ({})}
-              onSubmit={() => ({})}
-            />
+            <React.Fragment>
+              {registered !== null ? (
+                <EmailSuccess registered={registered} />
+              ) : (
+                <EmailInput
+                  value={email}
+                  mode="LOGIN"
+                  disabled={loading}
+                  onChange={onChangeEmail}
+                  onSubmit={onSubmit}
+                />
+              )}
+            </React.Fragment>
           )}
           {!emailToggle && toggle ? (
             <LandingLoginButton
