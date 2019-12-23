@@ -1,7 +1,9 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import { MdLockOutline } from 'react-icons/md';
+import palette from '../../lib/styles/palette';
 
-const LabelInputBlock = styled.fieldset`
+const LabelInputBlock = styled.fieldset<{ focus: boolean }>`
   margin-bottom: 15px !important;
   border: none;
   margin: 0;
@@ -39,30 +41,63 @@ const LabelInputBlock = styled.fieldset`
       padding: 0 5px;
       height: 35px;
       font-size: 20px !important;
+      ${props =>
+        props.focus &&
+        css`
+          color: ${palette.teal7};
+          border-color: ${palette.teal7};
+        `}
     }
   }
 `;
 
-interface LabelInputProps {
-  title: string;
+type InputProps = React.DetailedHTMLProps<
+  React.InputHTMLAttributes<HTMLInputElement>,
+  HTMLInputElement
+>;
+
+interface LabelInputProps extends InputProps {
+  label: string;
   name: string;
   value: string;
   placeHolder: string;
+  onChange: React.ChangeEventHandler;
 }
 
-const LabelInput = ({ title, name, value }: LabelInputProps) => {
+const LabelInput = ({
+  label,
+  name,
+  value,
+  onChange,
+  disabled,
+}: LabelInputProps) => {
+  const [focus, setFocus] = React.useState(false);
+
+  const onFocus = React.useCallback(() => {
+    setFocus(true);
+  }, []);
+
+  const onBlur = React.useCallback(() => {
+    setFocus(false);
+  }, []);
+
   return (
-    <LabelInputBlock>
+    <LabelInputBlock focus={focus}>
       <div className="input-group">
         <label htmlFor={name} className="input-group-title">
-          {title}
+          {label}
         </label>
         <input
           className="input-group-input"
           type="text"
           name={name}
           value={value}
+          onFocus={onFocus}
+          onBlur={onBlur}
+          onChange={onChange}
+          disabled={disabled}
         />
+        {disabled && <MdLockOutline />}
       </div>
     </LabelInputBlock>
   );
