@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const LandingLinkButtonBlock = styled.div`
+const LinkButtonBlock = styled.div`
   display: flex;
   justify-content: center;
   /* font-size: 1rem;
@@ -18,18 +18,18 @@ const LandingLinkButtonBlock = styled.div`
   }
 `;
 
-interface LandingLinkButtonProps {
+interface LinkButtonProps {
   onToggle: () => void;
 }
 const LandingLinkButton = ({
   onToggle,
-}: LandingLinkButtonProps) => {
+}: LinkButtonProps) => {
   return (
-    <LandingLinkButtonBlock>
+    <LinkButtonBlock>
       <button className="link" onClick={onToggle}>
       이메일로 로그인
       </button>
-    </LandingLinkButtonBlock>
+    </LinkButtonBlock>
   );
 };
 

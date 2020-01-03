@@ -1,15 +1,15 @@
 import React, { useCallback } from 'react';
 import { History } from 'history';
-import LandingFrom from '../../components/landing/LandingForm';
+import LoginForm from '../../components/login/LoginForm';
 import useRequest from '../../lib/hooks/useRequest';
 import { sendAuthEmail } from '../../lib/api/auth';
 import { SendAuthEmailResponse } from '../../lib/api/models';
 
-interface LandingFormContainerProps {
+interface LoginFormContainerProps {
   history: History<any>;
 }
 
-const LandingFormContainer = ({ history }: LandingFormContainerProps) => {
+const LoginFormContainer = ({ history }: LoginFormContainerProps) => {
   const [_sendAuthEmail, loading, data, code] = useRequest<
     SendAuthEmailResponse
   >(sendAuthEmail);
@@ -24,7 +24,7 @@ const LandingFormContainer = ({ history }: LandingFormContainerProps) => {
   );
 
   return (
-    <LandingFrom
+    <LoginForm
       loading={loading}
       registered={registered}
       onSendAuthEmail={onSendAuthEmail}
@@ -33,4 +33,4 @@ const LandingFormContainer = ({ history }: LandingFormContainerProps) => {
   );
 };
 
-export default LandingFormContainer;
+export default LoginFormContainer;

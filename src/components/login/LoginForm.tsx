@@ -2,16 +2,16 @@ import React, { useState, useCallback } from 'react';
 import styled, { css } from 'styled-components';
 import { History } from 'history';
 import { MdMail as EmailIcon } from 'react-icons/md';
-import LandingLoginButton from './LandingLoginButton';
+import LoginButton from './LoginButton';
 import SocialLoginButtonGroup from './SocialLoginButtonGroup';
-import LandingLink from './LandingLinkButton';
+import LinkButton from './LinkButton';
 import palette from '../../lib/styles/palette';
 import transitions from '../../lib/styles/transitions';
 import EmailInput from './EmailInput';
 import useInput from '../../lib/hooks/useInput';
 import EmailSuccess from './EmailSuccess';
 
-const LandingFromBlock = styled.div<{ visible: boolean }>`
+const LoginFormBlock = styled.div<{ visible: boolean }>`
   display: flex;
   flex: 1;
   flex-direction: column;
@@ -67,17 +67,17 @@ const LandingFromBlock = styled.div<{ visible: boolean }>`
   }
 `;
 
-interface LandingFromProps {
+interface LoginFromProps {
   loading: boolean;
   registered: boolean | null;
   history: History<any>;
   onSendAuthEmail: (email: string) => void;
 }
-const LandingFrom = ({
+const LoginFrom = ({
   loading,
   onSendAuthEmail,
   registered,
-}: LandingFromProps) => {
+}: LoginFromProps) => {
   // email 입력
   const [email, onChangeEmail] = useInput('');
 
@@ -106,7 +106,7 @@ const LandingFrom = ({
   };
 
   return (
-    <LandingFromBlock visible={visible}>
+    <LoginFormBlock visible={visible}>
       <div>
         <section className="title-wrapper">
           <h2>LaFu</h2>
@@ -129,7 +129,7 @@ const LandingFrom = ({
             </React.Fragment>
           )}
           {!emailToggle && toggle ? (
-            <LandingLoginButton
+            <LoginButton
               types="email"
               toggle={toggle}
               onToggle={onEmailToggle}
@@ -138,7 +138,7 @@ const LandingFrom = ({
             />
           ) : null}
           {toggle ? (
-            <LandingLoginButton
+            <LoginButton
               types="social"
               toggle={toggle}
               onToggle={onSocialToggle}
@@ -147,11 +147,11 @@ const LandingFrom = ({
           ) : (
             <SocialLoginButtonGroup visible={!visible} />
           )}
-          <LandingLink onToggle={onResetToggle} />
+          <LinkButton onToggle={onResetToggle} />
         </section>
       </div>
-    </LandingFromBlock>
+    </LoginFormBlock>
   );
 };
 
-export default LandingFrom;
+export default LoginFrom;

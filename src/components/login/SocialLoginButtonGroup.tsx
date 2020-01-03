@@ -17,6 +17,7 @@ const SocialLoginButtonGroupBlock = styled.div<{ visible: boolean }>`
 interface SocialLoginButtonGroupProps {
   visible: boolean;
 }
+
 const SocialLoginButtonGroup = ({
   visible,
 }: SocialLoginButtonGroupProps) => {

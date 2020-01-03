@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import palette from '../../lib/styles/palette';
 
-const LandingTemplateBlock = styled.div`
+const LoginTemplateBlock = styled.div`
   .background-screen {
     left: 0;
     right: 0;
@@ -52,20 +52,20 @@ const LandingTemplateBlock = styled.div`
   }
 `;
 
-interface LandingTemplateProps {
+interface LoginTemplateProps {
   children: React.ReactNode;
 }
-const LandingTemplate = ({ children }: LandingTemplateProps) => {
+const LoginTemplate = ({ children }: LoginTemplateProps) => {
   return (
-    <LandingTemplateBlock>
+    <LoginTemplateBlock>
       <div className="background-screen" />
       <div className="regist-form">
         <div className="wrapper">
           <div className="block-content">{children}</div>
         </div>
       </div>
-    </LandingTemplateBlock>
+    </LoginTemplateBlock>
   );
 };
 
-export default LandingTemplate;
+export default LoginTemplate;

@@ -3,7 +3,7 @@ import { useReducer, useCallback } from 'react';
 type UseErrorAction = {
   type: string;
   error: boolean;
-  name: string,
+  name: string;
   message: string;
 };
 
@@ -22,7 +22,7 @@ function reducer<T>(state: T, action: UseErrorAction) {
 }
 
 export default function useError<T>(defaultValues: T) {
-  const [state, dispatch] = useReducer(reducer, defaultValues);
+  const [state, dispatch] = useReducer(reducer, defaultValues as any);
   const onChange = useCallback(({ name, message }) => {
     dispatch({
         type: 'ERROR',

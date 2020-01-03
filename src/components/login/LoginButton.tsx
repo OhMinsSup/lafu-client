@@ -5,7 +5,7 @@ import transitions from '../../lib/styles/transitions';
 
 type RegistType = 'email' | 'social';
 
-const LandingLoginButtonBlock = styled.button<{
+const LoginButtonBlock = styled.button<{
   types: RegistType;
   toggle: boolean;
 }>`
@@ -67,28 +67,28 @@ const LandingLoginButtonBlock = styled.button<{
         `}
 `;
 
-interface LandingLoginButtonProps {
+interface LoginButtonProps {
   icon?: React.ReactNode;
   types: RegistType;
   text: string;
   toggle: boolean;
   onToggle?: () => void;
 }
-const LandingLoginButton = ({
+const LoginButton = ({
   icon,
   text,
   types,
   toggle,
   onToggle,
-}: LandingLoginButtonProps) => {
+}: LoginButtonProps) => {
   return (
-    <LandingLoginButtonBlock toggle={toggle} types={types} onClick={onToggle}>
+    <LoginButtonBlock toggle={toggle} types={types} onClick={onToggle}>
       {icon ? <div className="icon">{icon}</div> : null}
       <div className="text">
         <span>{text}</span>
       </div>
-    </LandingLoginButtonBlock>
+    </LoginButtonBlock>
   );
 };
 
-export default LandingLoginButton;
+export default LoginButton;
