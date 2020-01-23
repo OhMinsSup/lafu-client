@@ -7,7 +7,8 @@ import palette from '../../lib/styles/palette';
 
 const CarouselBlock = styled.div`
   width: auto;
-  height: 380.64px;
+  height: 500px;
+  min-height: 380.64px;
   position: relative;
   margin: 0 auto;
   margin-top: 170px !important;
@@ -44,7 +45,6 @@ const Carousel = ({  }: CarouselProps) => {
           <img src={carousel.bg_img} alt="" />
         </Link>
       </Frame>
-      {/* <OwlItem url={carousel.bg_img} key={`owls-${i}`} /> */}
     </React.Fragment>
   ));
 
