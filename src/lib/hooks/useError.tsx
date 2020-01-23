@@ -25,24 +25,24 @@ export default function useError<T>(defaultValues: T) {
   const [state, dispatch] = useReducer(reducer, defaultValues as any);
   const onChange = useCallback(({ name, message }) => {
     dispatch({
-        type: 'ERROR',
-        error: true,
-        name,
-        message,
+      type: 'ERROR',
+      error: true,
+      name,
+      message,
     });
   }, []);
 
   const onReset = useCallback(() => {
     dispatch({
-        type: 'ERROR',
-        error: false,
-        name: '',
-        message: '',
+      type: 'ERROR',
+      error: false,
+      name: '',
+      message: '',
     });
   }, []);
 
   return [state, onChange, onReset, dispatch] as [
-    T,
+    typeof state,
     typeof onChange,
     typeof onReset,
     typeof dispatch,

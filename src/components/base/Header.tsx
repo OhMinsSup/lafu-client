@@ -100,6 +100,7 @@ const Header = () => {
             <Link to="/thems">테마추천</Link>
             <Link to="/daily">요일별 신작</Link>
             <Link to="/voucher">멤버십</Link>
+            <Link to="/reviews">리뷰</Link>
           </div>
           <div className="right">
             <HeaderSearchButton />

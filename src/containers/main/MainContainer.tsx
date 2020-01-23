@@ -1,14 +1,15 @@
 import React from 'react';
+import Carousel from '../../components/main/Carousel';
 
-class MainContainer extends React.Component {
-  constructor(props: any) {
-    super(props);
-    this.state = {}
-  }
+interface MainContainerProps {}
 
-  render() {
-    return <div>메인</div>
-  }
-}
+const MainContainer = ({}: MainContainerProps) => {
+  return (
+    <React.Fragment>
+      <Carousel />
+      메인
+    </React.Fragment>
+  );
+};
 
 export default MainContainer;

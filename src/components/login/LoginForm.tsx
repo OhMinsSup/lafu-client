@@ -110,7 +110,7 @@ const LoginFrom = ({
       <div>
         <section className="title-wrapper">
           <h2>LaFu</h2>
-          <h4>여행을 여행답게</h4>
+          <h4>국내 최대 애니메이션 스트리밍 서비스</h4>
         </section>
         <section className="btn-wrapper">
           {emailToggle && (

@@ -1,13 +1,11 @@
+import './index.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import { loadableReady } from '@loadable/component';
 import Root from './Root';
 import * as serviceWorker from './serviceWorker';
 
-import { loadableReady } from '@loadable/component';
-const { NODE_ENV } = process.env;
-
-switch (NODE_ENV) {
+switch ( process.env.NODE_ENV) {
   case 'production':
     loadableReady(() => {
       ReactDOM.hydrate(<Root />, document.getElementById('root'));
