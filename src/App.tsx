@@ -6,6 +6,7 @@ import Core from './containers/core/Core';
 const LoginPage = loadable(() => import('./pages/LoginPage'));
 const MainPage = loadable(() => import('./pages/MainPage'));
 const SignupPage = loadable(() => import('./pages/SignupPage'));
+const ReviewPage = loadable(() => import('./pages/ReviewPage'));
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
         <Route exact path="/" component={MainPage} />
         <Route path="/auth/login" component={LoginPage} />
         <Route path="/auth/signup" component={SignupPage} />
+        <Route path="/reviews" component={ReviewPage} />
       </Switch>
       <Core />
     </React.Fragment>

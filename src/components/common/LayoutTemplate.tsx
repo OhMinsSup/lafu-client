@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import HeaderContainer from '../../containers/base/HeaderContainer';
-import FooterContainer from '../../containers/base/FooterContainer';
+// import FooterContainer from '../../containers/base/FooterContainer';
 
 const LayoutTemplateBlock = styled.div`
   background-color: #f9f9f9;
@@ -21,7 +21,7 @@ const LayoutTemplate = ({ children }: LayoutTemplateProps) => {
       <div className="App">
         <HeaderContainer />
         {children}
-        <FooterContainer />
+        {/* <FooterContainer /> */}
       </div>
     </LayoutTemplateBlock>
   );

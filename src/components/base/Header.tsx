@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+import cx from 'classnames';
 import palette from '../../lib/styles/palette';
 import HeaderLoginButton from './HeaderLoginButton';
 import HeaderSearchButton from './HeaderSearchButton';
@@ -42,6 +43,12 @@ const HeaderDesktop = styled.div`
       font-weight: 800;
       color: inherit;
       text-decoration: none;
+      &:hover {
+        color: ${palette.teal20};
+      }
+    }
+    .active {
+      color: ${palette.teal20};
     }
 
     a + a {
@@ -86,6 +93,7 @@ const HeaderBlock = styled.div`
 `;
 
 const Header = () => {
+  const { pathname } = useLocation();
   return (
     <HeaderBlock>
       <div className="main-header-wrapper">
@@ -96,11 +104,46 @@ const Header = () => {
             </Link>
           </LogoArea>
           <div className="header-links">
-            <Link to="/tags">태그검색</Link>
-            <Link to="/thems">테마추천</Link>
-            <Link to="/daily">요일별 신작</Link>
-            <Link to="/voucher">멤버십</Link>
-            <Link to="/reviews">리뷰</Link>
+            <Link
+              className={cx({
+                active: pathname.includes('/tags'),
+              })}
+              to="/tags"
+            >
+              태그검색
+            </Link>
+            <Link
+              className={cx({
+                active: pathname.includes('/thems'),
+              })}
+              to="/thems"
+            >
+              테마추천
+            </Link>
+            <Link
+              className={cx({
+                active: pathname.includes('/daily'),
+              })}
+              to="/daily"
+            >
+              요일별 신작
+            </Link>
+            <Link
+              className={cx({
+                active: pathname.includes('/voucher'),
+              })}
+              to="/voucher"
+            >
+              멤버십
+            </Link>
+            <Link
+              className={cx({
+                active: pathname.includes('/reviews'),
+              })}
+              to="/reviews"
+            >
+              리뷰
+            </Link>
           </div>
           <div className="right">
             <HeaderSearchButton />
