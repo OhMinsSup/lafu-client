@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { StortState } from '../../store/modules';
+import { RootStore } from '../../store/modules';
 import { setDarkMode } from '../../store/modules/core';
 
 interface OwnProps {}
@@ -21,7 +21,7 @@ class Core extends React.Component<CoreProps> {
   }
 }
 
-export default connect<StateProps, DispatchProps, OwnProps, StortState>(
+export default connect<StateProps, DispatchProps, OwnProps, RootStore>(
   ({ core }) => ({
     isDark: core.isDark,
   }),

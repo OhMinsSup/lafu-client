@@ -2,8 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import LayoutTemplate from '../components/common/LayoutTemplate';
 import SideMenu from '../components/common/SideMenu';
-import ReviewSideMenu from '../containers/review/ReviewSideMenu';
 import PostReviews from '../containers/review/PostReviews';
+import SideMenuContents from '../components/review/SideMenuContents';
 
 const ReviewPageBlock = styled.div`
   display: flex;
@@ -32,7 +32,7 @@ const ReviewPage = () => {
       <ReviewPageBlock>
         <div className="review-sidemenu">
           <SideMenu>
-            <ReviewSideMenu />
+            <SideMenuContents />
           </SideMenu>
         </div>
         <div className="review-main">

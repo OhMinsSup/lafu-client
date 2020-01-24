@@ -7,6 +7,7 @@ const LoginPage = loadable(() => import('./pages/LoginPage'));
 const MainPage = loadable(() => import('./pages/MainPage'));
 const SignupPage = loadable(() => import('./pages/SignupPage'));
 const ReviewPage = loadable(() => import('./pages/ReviewPage'));
+const WritePage = loadable(() => import('./pages/WritePage'));
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
         <Route path="/auth/login" component={LoginPage} />
         <Route path="/auth/signup" component={SignupPage} />
         <Route path="/reviews" component={ReviewPage} />
+        <Route path="/write" component={WritePage} />
       </Switch>
       <Core />
     </React.Fragment>
