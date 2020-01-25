@@ -94,9 +94,12 @@ const FooterWrapper = styled.div`
 interface MarkdownEditorProps {
   title: string;
   initialBody: string;
+  markdown: string;
   tagInput: React.ReactNode;
   footer: React.ReactNode;
+  onUpload: () => void;
   onChangeTitle: (title: string) => void;
+  onChangeMarkdown: (markdown: string) => void;
 }
 
 interface MarkdownEditorState {
@@ -148,8 +151,7 @@ class MarkdownEditor extends Component<
     if (detectJSDOM()) return;
     this.codemirror.setValue(this.props.initialBody);
     this.codemirror.on('change', cm => {
-      console.log('changed::', cm.getValue());
-      // TODO: Change Markdown
+      this.props.onChangeMarkdown(cm.getValue());
       this.stickToBottomIfNeeded();
     });
     this.codemirror.on('paste', ((editor: any, e: any) => {
@@ -645,8 +647,7 @@ class MarkdownEditor extends Component<
         this.handleOpenAddLink();
       },
       image: () => {
-        // TODO: Image upload
-        // this.props.onUpload();
+        this.props.onUpload();
       },
       codeblock: () => {
         const selected = doc.getSelection();

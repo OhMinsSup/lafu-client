@@ -7,7 +7,7 @@ import palette from '../../lib/styles/palette';
 
 const CarouselBlock = styled.div`
   width: auto;
-  height: 500px;
+  height: 380.64px;
   min-height: 380.64px;
   position: relative;
   margin: 0 auto;

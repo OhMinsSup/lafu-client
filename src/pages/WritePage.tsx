@@ -4,7 +4,7 @@ import ActiveEditor from '../containers/write/ActiveEditor';
 
 const WritePageBlock = styled.div`
   width: 100%;
-  height: 100%;
+  height: 100vh;
 `;
 
 interface WritePageProps {}
