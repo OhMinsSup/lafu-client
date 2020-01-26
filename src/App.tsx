@@ -8,6 +8,7 @@ const MainPage = loadable(() => import('./pages/MainPage'));
 const SignupPage = loadable(() => import('./pages/SignupPage'));
 const ReviewPage = loadable(() => import('./pages/ReviewPage'));
 const WritePage = loadable(() => import('./pages/WritePage'));
+const DailyPage = loadable(() => import('./pages/DailyPage'));
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
         <Route exact path="/" component={MainPage} />
         <Route path="/auth/login" component={LoginPage} />
         <Route path="/auth/signup" component={SignupPage} />
+        <Route path="/daily" component={DailyPage} />
         <Route path="/reviews" component={ReviewPage} />
         <Route path="/write" component={WritePage} />
       </Switch>

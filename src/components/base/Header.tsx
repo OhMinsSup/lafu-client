@@ -130,14 +130,6 @@ const Header = () => {
             </Link>
             <Link
               className={cx({
-                active: pathname.includes('/voucher'),
-              })}
-              to="/voucher"
-            >
-              멤버십
-            </Link>
-            <Link
-              className={cx({
                 active: pathname.includes('/reviews'),
               })}
               to="/reviews"
