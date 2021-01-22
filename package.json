@@ -1,0 +1,53 @@
+{
+  "name": "lafu-client",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "snowpack dev",
+    "build": "snowpack build",
+    "test": "wtr \"src/**/*.(test|spec).(t|j)s\"",
+    "test:watch": "wtr \"src/**/*.(test|spec).(t|j)s\" --watch"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OhMinsSup/lafu-client.git"
+  },
+  "keywords": [
+    "svelte",
+    "snowpack",
+    "typescript",
+    "scss"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/OhMinsSup/lafu-client/issues"
+  },
+  "homepage": "https://github.com/OhMinsSup/lafu-client#readme",
+  "devDependencies": {
+    "@snowpack/app-scripts-svelte": "^2.0.0",
+    "@snowpack/plugin-babel": "^2.1.6",
+    "@snowpack/plugin-dotenv": "^2.0.5",
+    "@snowpack/plugin-optimize": "^0.2.13",
+    "@snowpack/plugin-sass": "^1.3.0",
+    "@snowpack/plugin-svelte": "^3.5.2",
+    "@snowpack/plugin-typescript": "^1.2.1",
+    "@snowpack/web-test-runner-plugin": "^0.2.1",
+    "@testing-library/svelte": "^3.0.3",
+    "@types/chai": "^4.2.14",
+    "@types/snowpack-env": "^2.3.3",
+    "@web/test-runner": "^0.12.5",
+    "autoprefixer": "^10.2.3",
+    "babel-plugin-transform-remove-console": "^6.9.4",
+    "chai": "^4.2.0",
+    "postcss": "^8.2.4",
+    "snowpack": "^3.0.11",
+    "svelte": "^3.31.2",
+    "svelte-preprocess": "^4.6.3",
+    "typescript": "^4.1.3"
+  }
+}
