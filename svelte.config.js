@@ -12,8 +12,10 @@ module.exports = {
     },
     postcss: {
       plugins: [
+        require("tailwindcss"),
+        require("autoprefixer"),
         // Check package.json browserslist
-        require("autoprefixer")(),
+        // require("autoprefixer")(),
       ],
     },
     babel: {

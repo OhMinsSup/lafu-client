@@ -10,6 +10,7 @@ module.exports = {
     "@snowpack/plugin-sass",
     "@snowpack/plugin-babel",
     "@snowpack/plugin-optimize",
+    "@snowpack/plugin-postcss",
   ],
   alias: {
     "~": "./src",
