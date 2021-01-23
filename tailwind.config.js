@@ -10,6 +10,11 @@ module.exports = {
       colors: {
         purple: colors.purple,
       },
+      width: {
+        1024: "1024px",
+        768: "768px",
+        480: "480px",
+      },
     },
   },
   variants: {
