@@ -30,6 +30,7 @@
   },
   "homepage": "https://github.com/OhMinsSup/lafu-client#readme",
   "devDependencies": {
+    "@beyonk/svelte-carousel": "^2.8.0",
     "@snowpack/app-scripts-svelte": "^2.0.0",
     "@snowpack/plugin-babel": "^2.1.6",
     "@snowpack/plugin-dotenv": "^2.0.5",

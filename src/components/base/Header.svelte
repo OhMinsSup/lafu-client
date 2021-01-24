@@ -37,5 +37,4 @@
     transition: stroke 0.4s ease 0s;
     stroke: white !important;
   }
-  /* scss */
 </style>
