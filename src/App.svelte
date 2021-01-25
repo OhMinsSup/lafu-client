@@ -2,18 +2,23 @@
   import "./TailwindStyles.svelte";
 
   import { fade } from "svelte/transition";
+  import { QueryClient, QueryClientProvider } from "@sveltestack/svelte-query";
   import Router from "svelte-spa-router";
   import routes from "@/pages";
 
   import Header from "@/components/base/Header.svelte";
+
+  const queryClient = new QueryClient();
 </script>
 
 <Header />
-<div class="h-full">
-  <div class="h-full" in:fade>
-    <Router {routes} restoreScrollState={true} />
+<QueryClientProvider client={queryClient}>
+  <div class="h-full">
+    <div class="h-full" in:fade>
+      <Router {routes} restoreScrollState={true} />
+    </div>
   </div>
-</div>
+</QueryClientProvider>
 
 <style lang="scss">
   /*  */
