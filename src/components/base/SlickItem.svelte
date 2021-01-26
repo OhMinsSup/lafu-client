@@ -3,27 +3,29 @@
 
   let ref: HTMLDivElement | null = null;
 
-  export let button_text: string = "";
+  export let clientWidth = 0;
+  // export let button_text: string = "";
   export let content: string = "";
-  export let id: number = -1;
-  export let is_adult: boolean = false;
-  export let label: string = "";
+  // export let id: number = 0;
+  // export let is_adult: boolean = false;
+  // export let label: string = "";
   export let logo_img: string = "";
   export let mobile_img: string = "";
   export let web_img: string = "";
 
-  $: if (ref) update(ref);
+  $: if (ref) update(ref, clientWidth);
 
-  async function update(ref: HTMLDivElement) {
-    // const backgroundImage = `background-image: linear-gradient(
-    //       90deg,
-    //       rgba(18, 18, 18, 0.7) 0%,
-    //       rgba(18, 18, 18, 0) 49.03%
-    //     ),
-    //     linear-gradient(rgba(18, 18, 18, 0) 50%, rgba(18, 18, 18, 0.7) 100%),
-    //     linear-gradient(rgba(18, 18, 18, 0.7) 0%, rgba(18, 18, 18, 0) 32.71%),
-    //     url("${mainImg}");`;
-    const backgroundImage = `background-image: linear-gradient(
+  async function update(ref: HTMLDivElement, clientWidth: number) {
+    const webImg = `background-image: linear-gradient(
+          90deg,
+          rgba(18, 18, 18, 0.7) 0%,
+          rgba(18, 18, 18, 0) 49.03%
+        ),
+        linear-gradient(rgba(18, 18, 18, 0) 50%, rgba(18, 18, 18, 0.7) 100%),
+        linear-gradient(rgba(18, 18, 18, 0.7) 0%, rgba(18, 18, 18, 0) 32.71%),
+        url("${web_img}");`;
+
+    const mobileImg = `background-image: linear-gradient(
         90deg,
         rgba(18, 18, 18, 0.5) 0%,
         rgba(18, 18, 18, 0) 50%
@@ -32,7 +34,7 @@
       linear-gradient(rgba(18, 18, 18, 0) 50%, rgba(18, 18, 18, 0.5) 100%),
       url("${mobile_img}");`;
 
-    ref.style.cssText = backgroundImage;
+    ref.style.cssText = clientWidth > 480 ? webImg : mobileImg;
     await tick();
   }
 </script>
