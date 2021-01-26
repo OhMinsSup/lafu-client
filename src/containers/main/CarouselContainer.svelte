@@ -4,7 +4,7 @@
   import { getMainCarouselAPI, GET_MAIN_CAROUSE_KEY } from "@/libs/apis/main";
   import SlickItem from "@/components/base/SlickItem.svelte";
 
-  export let clientWidth = 0;
+  export let clientWidth: number;
 
   const queryResult = useQuery(GET_MAIN_CAROUSE_KEY, getMainCarouselAPI, {
     retry: false,

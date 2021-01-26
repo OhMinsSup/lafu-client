@@ -1,15 +1,13 @@
 <script lang="ts">
   import CarouselContainer from "@/containers/main/CarouselContainer.svelte";
+  import { browserWidth } from "@/store/main";
 
-  let clientWidth = 0;
+  $: clientWidth = $browserWidth;
 </script>
 
 <svelte:head>
   <title>라프텔 - 애니 추천 • 애니스트리밍 사이트</title>
 </svelte:head>
-<div class="bg-white w-screen" bind:clientWidth>
+<div class="bg-white w-screen">
   <CarouselContainer {clientWidth} />
 </div>
-
-<style lang="scss">
-</style>

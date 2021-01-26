@@ -2,16 +2,17 @@
   import { tick } from "svelte";
 
   let ref: HTMLDivElement | null = null;
-
-  export let clientWidth = 0;
-  // export let button_text: string = "";
+  export let clientWidth: number;
+  export let button_text: string = "";
   export let content: string = "";
-  // export let id: number = 0;
-  // export let is_adult: boolean = false;
-  // export let label: string = "";
+  export let id: number = 0;
+  export let is_adult: boolean = false;
+  export let label: string = "";
   export let logo_img: string = "";
   export let mobile_img: string = "";
   export let web_img: string = "";
+
+  console.log(is_adult, label, id, button_text);
 
   $: if (ref) update(ref, clientWidth);
 

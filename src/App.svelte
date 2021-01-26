@@ -1,22 +1,33 @@
 <script lang="ts">
   import "./TailwindStyles.svelte";
-
   import { fade } from "svelte/transition";
   import { QueryClient, QueryClientProvider } from "@sveltestack/svelte-query";
   import Router from "svelte-spa-router";
+
   import routes from "@/pages";
+  import MobileHeader from "~/components/base/MobileHeader.svelte";
 
-  import Header from "@/components/base/Header.svelte";
+  import { browserWidth } from "./store/main";
+  import DesktopHeader from "./components/base/DesktopHeader.svelte";
 
+  let clientWidth = 0;
   const queryClient = new QueryClient();
+
+  $: update(clientWidth);
+
+  function update(clientWidth: number) {
+    browserWidth.update(() => clientWidth);
+  }
 </script>
 
-<Header />
+{#if clientWidth < 1024}
+  <MobileHeader />
+{:else}
+  <DesktopHeader />
+{/if}
 <QueryClientProvider client={queryClient}>
-  <div class="h-full">
-    <div class="h-full" in:fade>
-      <Router {routes} restoreScrollState={true} />
-    </div>
+  <div class="h-full" in:fade bind:clientWidth>
+    <Router {routes} restoreScrollState={true} />
   </div>
 </QueryClientProvider>
 

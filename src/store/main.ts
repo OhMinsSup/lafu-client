@@ -1,4 +1,6 @@
-// import { get, writable } from "svelte/store";
+import { writable } from "svelte/store";
+
+export const browserWidth = writable<number>(0);
 
 // export const homes = writable<any[]>([]);
 // export const message = writable<string>("");

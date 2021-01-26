@@ -1,6 +1,6 @@
 // @ts-ignore
-import Home from "./Home.svelte";
+import Main from "./Main.svelte";
 
 export default {
-  "/": Home,
+  "/": Main,
 };
