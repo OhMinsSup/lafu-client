@@ -1,6 +1,6 @@
 <script lang="ts">
   import "./TailwindStyles.svelte";
-  import { fade } from "svelte/transition";
+
   import { QueryClient, QueryClientProvider } from "@sveltestack/svelte-query";
   import Router from "svelte-spa-router";
 
@@ -26,13 +26,12 @@
   <DesktopHeader />
 {/if}
 <QueryClientProvider client={queryClient}>
-  <div class="h-full" in:fade bind:clientWidth>
+  <div class="h-full" bind:clientWidth>
     <Router {routes} restoreScrollState={true} />
   </div>
 </QueryClientProvider>
 
 <style lang="scss">
-  /*  */
   :global(body) {
     background-color: rgb(249, 249, 249);
     margin: 0px;

@@ -1,5 +1,6 @@
 <script lang="ts">
   import { tick } from "svelte";
+  import LeftArrowIcon from "../svg/LeftArrowIcon.svelte";
 
   let ref: HTMLDivElement | null = null;
   export let clientWidth: number;
@@ -46,6 +47,15 @@
     <div class="carousel-description">
       <span>{content}</span>
     </div>
+    {#if clientWidth > 480}
+      <button
+        type="button"
+        class="flex items-center justify-items-center bg-white mt-6 cursor-pointer rounded"
+      >
+        <span class="font-bold text-xl">{button_text}</span>
+        <LeftArrowIcon width={20} height={20} />
+      </button>
+    {/if}
   </div>
 </div>
 
@@ -116,6 +126,10 @@
           margin-top: 0.375em;
           top: 300px;
         }
+      }
+
+      button {
+        padding: 0.75em 1.125em 0.75em 1.5em;
       }
     }
   }

@@ -2,12 +2,13 @@
   export let width: number = 44;
   export let height: number = 17;
   export let classNames: string = "";
+  export let fillColor: string = "#282A35";
 </script>
 
 <svg {width} {height} viewBox="0 0 44 17" class={classNames}>
-  <g fill="#282A35" fill-rule="evenodd">
+  <g fill={fillColor} fill-rule="evenodd">
     <path
-      stroke="#282A35"
+      stroke={fillColor}
       stroke-width="0.6"
       d="M42.638 1H23.362a1.029 1.029 0 0 0 0 2.057h19.276a1.029 1.029 0 0 0 0-2.057zm0 6.8H30.695a1.029 1.029 0 0 0 0 2.057h11.943a1.029 1.029 0 0 0 0-2.057zm0 6.8h-6.943a1.029 1.029 0 1 0 0 2.057h6.943a1.029 1.029 0 0 0 0-2.057z"
     />
