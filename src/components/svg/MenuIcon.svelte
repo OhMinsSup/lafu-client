@@ -2,7 +2,7 @@
   export let width: number = 44;
   export let height: number = 17;
   export let classNames: string = "";
-  export let fillColor: string = "#282A35";
+  export let fillColor: string = "#ffff";
 </script>
 
 <svg {width} {height} viewBox="0 0 44 17" class={classNames}>

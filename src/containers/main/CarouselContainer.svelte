@@ -1,14 +1,11 @@
 <script lang="ts">
-  import { useQuery } from "@sveltestack/svelte-query";
   import Carousel from "@beyonk/svelte-carousel";
-  import { getMainCarouselAPI, GET_MAIN_CAROUSE_KEY } from "@/libs/apis/main";
+
   import SlickItem from "@/components/base/SlickItem.svelte";
+  import { useCarouselQuery } from "@/libs/hooks/main";
 
   export let clientWidth: number;
-
-  const queryResult = useQuery(GET_MAIN_CAROUSE_KEY, getMainCarouselAPI, {
-    retry: false,
-  });
+  const queryResult = useCarouselQuery();
 </script>
 
 <div class="carousel-wrapper">
@@ -20,7 +17,7 @@
       controls={false}
       dots={true}
     >
-      {#each $queryResult.data.data.data as carousel (carousel.id)}
+      {#each $queryResult.data.data as carousel (carousel.id)}
         <div class="slide-content">
           <SlickItem {clientWidth} {...carousel} />
         </div>

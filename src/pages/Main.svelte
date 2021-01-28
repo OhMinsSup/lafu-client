@@ -1,6 +1,7 @@
 <script lang="ts">
   import CarouselContainer from "@/containers/main/CarouselContainer.svelte";
   import { browserWidth } from "@/store/main";
+  import ContentContainer from "~/containers/main/ContentContainer.svelte";
 
   $: clientWidth = $browserWidth;
 </script>
@@ -10,4 +11,5 @@
 </svelte:head>
 <div class="bg-white w-screen">
   <CarouselContainer {clientWidth} />
+  <ContentContainer {clientWidth} />
 </div>

@@ -4,19 +4,34 @@
   import HeaderWrapper from "./HeaderWrapper.svelte";
 </script>
 
-<HeaderWrapper>
+<HeaderWrapper let:hasScroll>
   <div class="h-12 relative flex px-4 z-20 items-center justify-center">
     <div class="absolute right-4 flex justify-center items-center">
-      <SearchIcon
-        width={24}
-        height={24}
-        classNames="z-1 cursor-pointer text-white transition-colors"
-      />
-      <MenuIcon
-        width={44}
-        height={17}
-        classNames="z-1 ml-4 cursor-pointer menu-icon"
-      />
+      {#if hasScroll}
+        <SearchIcon
+          width={24}
+          height={24}
+          fillColor="#282A35"
+          classNames="z-1 cursor-pointer text-white transition-colors"
+        />
+        <MenuIcon
+          width={44}
+          height={17}
+          fillColor="#282A35"
+          classNames="z-1 ml-4 cursor-pointer menu-icon"
+        />
+      {:else}
+        <SearchIcon
+          width={24}
+          height={24}
+          classNames="z-1 cursor-pointer text-white transition-colors"
+        />
+        <MenuIcon
+          width={44}
+          height={17}
+          classNames="z-1 ml-4 cursor-pointer menu-icon"
+        />
+      {/if}
     </div>
   </div>
 </HeaderWrapper>
@@ -24,11 +39,11 @@
 <style lang="scss">
   :global(.menu-icon g) {
     transition: fill 0.4s ease 0s;
-    fill: white;
+    /* fill: white; */
   }
 
   :global(.menu-icon g path:first-child) {
     transition: stroke 0.4s ease 0s;
-    stroke: white !important;
+    /* stroke: white !important; */
   }
 </style>
