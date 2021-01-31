@@ -20,14 +20,16 @@
   }
 </script>
 
-{#if clientWidth < 1024}
-  <MobileHeader />
-{:else}
-  <DesktopHeader />
-{/if}
 <QueryClientProvider client={queryClient}>
+  {#if clientWidth < 1024}
+    <MobileHeader />
+  {:else}
+    <DesktopHeader />
+  {/if}
   <div class="h-full" bind:clientWidth>
-    <Router {routes} restoreScrollState={true} />
+    <div class="h-full">
+      <Router {routes} restoreScrollState={true} />
+    </div>
   </div>
 </QueryClientProvider>
 

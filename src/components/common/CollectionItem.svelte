@@ -23,18 +23,14 @@
 </script>
 
 <!-- markup (zero or more items) goes here -->
-<a href="/" class="collection-item cursor-pointer" use:link>
-  <div class="thumbnail relative w-full overflow-hidden mb-1 rounded">
+<a href="/" class="collection-item" use:link>
+  <div class="thumbnail">
     <picture>
       <source srcset={images[0].img_url} type="image/webp" />
-      <img
-        class="w-full absolute object-cover"
-        src={images[0].img_url}
-        alt={name}
-      />
+      <img src={images[0].img_url} alt={name} />
     </picture>
   </div>
-  <div class="absolute flex flex-row right-2 bottom-2" />
+  <!-- <div class="absolute flex flex-row right-2 bottom-2" /> -->
   <div class="footer">
     <span>{name}</span>
   </div>
@@ -45,28 +41,33 @@
     flex: 0 0 18.625em;
     width: 18.625em;
     scroll-snap-align: start;
+    cursor: pointer;
 
-    & + & {
-      margin-left: 0.5rem;
-    }
-
-    @media (pointer: coarse), (hover: none), (max-width: 480px) {
+    /* @media (pointer: coarse), (hover: none), (max-width: 480px) {
       flex: 0 0 12.25em;
       width: 12.25em;
-    }
+    } */
 
     .thumbnail {
+      position: relative;
+      width: 100%;
       height: 10.375em;
+      border-radius: 0.25em;
+      margin-bottom: 0.25em;
+      overflow: hidden;
 
-      @media (pointer: coarse), (hover: none), (max-width: 480px) {
+      /* @media (pointer: coarse), (hover: none), (max-width: 480px) {
         height: 6.875em;
-      }
+      } */
 
       img {
+        position: absolute;
+        width: 100%;
+        object-fit: cover;
         height: 10.375em;
-        @media (pointer: coarse), (hover: none), (max-width: 480px) {
+        /* @media (pointer: coarse), (hover: none), (max-width: 480px) {
           height: 6.875em;
-        }
+        } */
       }
     }
 
@@ -75,14 +76,14 @@
       overflow: hidden;
       height: 3.375em;
 
-      @media (pointer: coarse), (hover: none), (max-width: 480px) {
+      /* @media (pointer: coarse), (hover: none), (max-width: 480px) {
         height: 2.25em;
       }
 
       @media (pointer: coarse), (hover: none) {
         width: 100%;
         height: 2.625em;
-      }
+      } */
 
       span {
         font-size: 1.125em;
@@ -94,14 +95,14 @@
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
 
-        @media (pointer: coarse), (hover: none), (max-width: 480px) {
+        /* @media (pointer: coarse), (hover: none), (max-width: 480px) {
           font-size: 0.8125em;
           line-height: 1.3846em;
         }
 
         @media (pointer: coarse), (hover: none) {
           font-size: 0.875em;
-        }
+        } */
       }
     }
   }

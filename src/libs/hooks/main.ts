@@ -12,7 +12,6 @@ export function useCarouselQuery() {
     onSuccess: (result) => {
       return {
         ...result,
-        data: result.data || [],
       };
     },
   });
@@ -26,7 +25,6 @@ export function useRecommendQuery() {
     onSuccess: (result) => {
       return {
         ...result,
-        data: result.data,
       };
     },
   });
