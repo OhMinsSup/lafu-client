@@ -19,15 +19,15 @@ export interface CarouselModel {
 export type CarouseListResponse = APIResponse<CarouselModel[]>;
 
 export interface ItemList {
-  id: number;
+  id: number | string;
   name: string;
   images: Image[];
   is_adult: boolean;
   is_uncensored: boolean;
   is_dubbed: boolean;
-  medium: Medium;
+  medium: Medium | string;
   is_laftel_only: boolean;
-  content_rating: ContentRating;
+  content_rating: ContentRating | any;
   is_ending: boolean;
   genre: string[];
   content: string;
@@ -36,7 +36,7 @@ export interface ItemList {
 }
 
 export interface Image {
-  option_name: OptionName;
+  option_name: OptionName | string;
   img_url: string;
   crop_ratio: string;
 }

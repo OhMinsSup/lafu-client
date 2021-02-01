@@ -11,6 +11,31 @@
 </svelte:head>
 <div class="bg-white">
   <CarouselContainer {clientWidth} />
-  <ContentContainer {clientWidth} />
+  <ContentContainer />
   <div />
 </div>
+
+<style lang="scss">
+  :global(.content-container) {
+    padding-top: 2.5em;
+    padding-bottom: 9.125em;
+    overflow-x: hidden;
+    width: 100%;
+
+    @media (max-width: 1024px) {
+      font-size: 15px;
+    }
+
+    @media (max-width: 768px) {
+      font-size: 12px;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 9px;
+    }
+
+    @media (max-width: 375px) {
+      font-size: 6px;
+    }
+  }
+</style>

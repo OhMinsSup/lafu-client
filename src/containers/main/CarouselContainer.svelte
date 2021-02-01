@@ -2,14 +2,28 @@
   import Carousel from "@beyonk/svelte-carousel";
 
   import SlickItem from "@/components/base/SlickItem.svelte";
-  import { useCarouselQuery } from "@/libs/hooks/main";
+  import data from "../../data/carousel";
+  // import { useCarouselQuery } from "@/libs/hooks/main";
 
   export let clientWidth: number;
-  const queryResult = useCarouselQuery();
+  // const queryResult = useCarouselQuery();
 </script>
 
 <div class="carousel-wrapper">
-  {#if $queryResult.data}
+  <Carousel
+    perPage={1}
+    loop={true}
+    autoplay={3000}
+    controls={false}
+    dots={true}
+  >
+    {#each data as carousel (carousel.id)}
+      <div class="slide-content">
+        <SlickItem {clientWidth} {...carousel} />
+      </div>
+    {/each}
+  </Carousel>
+  <!-- {#if $queryResult.data}
     <Carousel
       perPage={1}
       loop={true}
@@ -23,7 +37,7 @@
         </div>
       {/each}
     </Carousel>
-  {/if}
+  {/if} -->
 </div>
 
 <style lang="scss">
