@@ -7,7 +7,10 @@
   } from "@/libs/apis/model/common/common.model";
   import type { Image } from "@/libs/apis/model/main/main.model";
   import InfoIcon from "../svg/InfoIcon.svelte";
-  import playhistory from "~/data/playhistory";
+  import PlayIcon from "../svg/PlayIcon.svelte";
+  import Badge from "./Badge.svelte";
+  import { keyBy } from "lodash";
+  import { onMount } from "svelte";
 
   export let id: number | string = "";
   export let name: string = "";
@@ -26,6 +29,20 @@
   export let img: string = "";
   export let type: string = "";
   export let last_played_episode_info: any = {};
+
+  let badges: any[] = [];
+  onMount(() => {
+    const badge = {
+      is_dubbed,
+      is_uncensored,
+      is_adult,
+      is_laftel_only,
+      is_ending,
+      is_avod,
+    };
+
+    badges = Object.entries(badge).filter(([k, v]) => v);
+  });
 </script>
 
 <!-- markup (zero or more items) goes here -->
@@ -42,8 +59,22 @@
         <img src={images[0].img_url} alt={name} />
       </picture>
     {/if}
+
     {#if !isEmpty(last_played_episode_info)}
-      history
+      <div class="play-history-control">
+        <div class="play-history-len absolute rounded">
+          <!-- progress -->
+          <div class="progress absolute h-full rounded" />
+        </div>
+        <div class="play-history-hover absolute w-full h-full" />
+        <PlayIcon />
+      </div>
+    {:else}
+      <div class="absolute right-1 bottom-1 flex flex-row space-x-2">
+        {#each badges as [k, v], key (key)}
+          <Badge key={k} value={v} />
+        {/each}
+      </div>
     {/if}
   </div>
   <!-- <div class="absolute flex flex-row right-2 bottom-2" /> -->
@@ -84,6 +115,33 @@
         width: 100%;
         object-fit: cover;
         height: 10.375em;
+      }
+    }
+
+    .play-history-control {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      -webkit-box-pack: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      align-items: center;
+      background: linear-gradient(
+        rgba(0, 0, 0, 0) 50%,
+        rgba(0, 0, 0, 0.8) 100%
+      );
+
+      .play-history-len {
+        left: 0.75em;
+        right: 0.75em;
+        bottom: 0.75em;
+        height: 0.375em;
+        background-color: rgb(224, 224, 224);
+        .progress {
+          background-color: rgb(129, 107, 255);
+          width: 43%;
+        }
       }
     }
 
