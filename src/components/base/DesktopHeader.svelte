@@ -5,6 +5,9 @@
   import NotificationIcon from "../svg/NotificationIcon.svelte";
   import SearchIcon from "../svg/SearchIcon.svelte";
   import HeaderWrapper from "./HeaderWrapper.svelte";
+  import UserMenu from "./UserMenu.svelte";
+
+  let useMenu: boolean = false;
 </script>
 
 <HeaderWrapper let:hasScroll>
@@ -28,9 +31,14 @@
       <div class="icon-wrapper ml-4" class:black={hasScroll}>
         <SearchIcon />
       </div>
-      <a href="/" class="icon-wrapper ml-2" use:link class:black={hasScroll}>
+      <a
+        href="/"
+        class="icon-wrapper ml-2 relative"
+        use:link
+        class:black={hasScroll}
+      >
         <NotificationIcon />
-        <!-- <div class="red-dot" /> -->
+        <div class="red-dot" />
       </a>
       <div class="relative ml-6 text-xs header-user-menu">
         <div class="drop-down">
@@ -46,6 +54,7 @@
             <DownArrowIcon classNames="text-sm" />
           {/if}
         </div>
+        <UserMenu />
       </div>
     </div>
   </div>
@@ -113,7 +122,7 @@
     color: black;
   }
 
-  /* .red-dot {
+  .red-dot {
     position: absolute;
     top: 6px;
     right: 6px;
@@ -121,5 +130,5 @@
     height: 7px;
     border-radius: 3.5px;
     background: rgb(255, 16, 16);
-  } */
+  }
 </style>
