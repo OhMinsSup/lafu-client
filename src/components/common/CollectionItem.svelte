@@ -1,5 +1,6 @@
 <script lang="ts">
   import isEmpty from "lodash/isEmpty";
+  import take from "lodash/take";
   import { link } from "svelte-spa-router";
   import type {
     ContentRating,
@@ -12,22 +13,22 @@
   import { keyBy } from "lodash";
   import { onMount } from "svelte";
 
-  export let id: number | string = "";
+  export const id: number | string = "";
   export let name: string = "";
   export let images: Image[] = [];
   export let is_adult: boolean = false;
   export let is_uncensored: boolean = false;
   export let is_dubbed: boolean = false;
-  export let medium: Medium | string = "";
+  export const medium: Medium | string = "";
   export let is_laftel_only: boolean = false;
-  export let content_rating: ContentRating | string = "";
+  export const content_rating: ContentRating | string = "";
   export let is_ending: boolean = false;
-  export let genre: string[] = [];
-  export let content: string = "";
-  export let avg_rating: number = 0;
+  export const genre: string[] = [];
+  export const content: string = "";
+  export const avg_rating: number = 0;
   export let is_avod: boolean = false;
   export let img: string = "";
-  export let type: string = "";
+  export const type: string = "";
   export let last_played_episode_info: any = {};
 
   let badges: any[] = [];
@@ -41,7 +42,12 @@
       is_avod,
     };
 
-    badges = Object.entries(badge).filter(([k, v]) => v);
+    badges = take(
+      Object.entries(badge)
+        .filter(([k, v]) => v)
+        .sort(),
+      2
+    );
   });
 </script>
 
@@ -95,6 +101,7 @@
   </a>
 </div>
 
+<!-- markup (zero or more items) goes here -->
 <style lang="scss">
   .collection-item {
     flex: 0 0 18.625em;
@@ -159,9 +166,6 @@
         white-space: normal;
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
-      }
-
-      .play-history-info-icon {
       }
     }
   }

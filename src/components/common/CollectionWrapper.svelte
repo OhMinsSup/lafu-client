@@ -10,15 +10,14 @@
   </div>
   <div class="collection-slider">
     <div class="inner flex w-full flex-wrap space-x-2">
-      <slot>
-        <!-- fallback solt -->
-      </slot>
+      <slot />
     </div>
   </div>
 </div>
 
 <style lang="scss">
   .collection-list {
+    margin-left: -1rem;
     position: relative;
     display: flex;
     flex-direction: column;

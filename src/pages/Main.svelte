@@ -31,11 +31,11 @@
     }
 
     @media (max-width: 480px) {
-      font-size: 9px;
+      /* font-size: 9px; */
     }
 
     @media (max-width: 375px) {
-      font-size: 6px;
+      /* font-size: 6px; */
     }
   }
 </style>
