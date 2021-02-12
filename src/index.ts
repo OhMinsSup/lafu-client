@@ -1,3 +1,7 @@
+import "lazysizes";
+import "lazysizes/plugins/parent-fit/ls.parent-fit.js";
+import "lazysizes/plugins/blur-up/ls.blur-up.js";
+
 // @ts-ignore
 import App from "./App.svelte";
 

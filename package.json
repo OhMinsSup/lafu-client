@@ -58,7 +58,9 @@
   "dependencies": {
     "@sveltestack/svelte-query": "^1.0.4",
     "axios": "^0.21.1",
+    "lazysizes": "^5.3.0",
     "lodash": "^4.17.20",
+    "svelte-actions": "^0.1.0",
     "tailwindcss": "^2.0.2"
   }
 }

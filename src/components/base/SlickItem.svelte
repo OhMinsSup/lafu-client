@@ -6,14 +6,12 @@
   export let clientWidth: number;
   export let button_text: string = "";
   export let content: string = "";
-  export let id: number = 0;
-  export let is_adult: boolean = false;
-  export let label: string = "";
+  export const id: number = 0;
+  export const is_adult: boolean = false;
+  export const label: string = "";
   export let logo_img: string = "";
   export let mobile_img: string = "";
   export let web_img: string = "";
-
-  console.log(is_adult, label, id, button_text);
 
   $: if (ref) update(ref, clientWidth);
 
@@ -43,7 +41,12 @@
 
 <div class="carousel-item" bind:this={ref}>
   <div class="carousel-content absolute">
-    <img class="object-cover" src={logo_img} alt="logo-description" />
+    <img
+      class="lazyload blur-up object-cover"
+      data-src={logo_img}
+      data-sizes="auto"
+      alt="logo-description"
+    />
     <div class="carousel-description">
       <span>{content}</span>
     </div>

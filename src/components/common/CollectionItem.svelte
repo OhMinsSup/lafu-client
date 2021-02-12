@@ -57,12 +57,22 @@
     {#if img}
       <picture>
         <source srcset={img} type="image/webp" />
-        <img src={img} alt={name} />
+        <img
+          class="lazyload blur-up"
+          data-src={img}
+          data-sizes="auto"
+          alt={name}
+        />
       </picture>
     {:else if images.length}
       <picture>
         <source srcset={images[0].img_url} type="image/webp" />
-        <img src={images[0].img_url} alt={name} />
+        <img
+          class="lazyload blur-up"
+          data-src={images[0].img_url}
+          data-sizes="auto"
+          alt={name}
+        />
       </picture>
     {/if}
 

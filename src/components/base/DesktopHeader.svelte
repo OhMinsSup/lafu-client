@@ -1,13 +1,19 @@
 <script lang="ts">
   import { link } from "svelte-spa-router";
+
   import DownArrowIcon from "../svg/DownArrowIcon.svelte";
   import Logo from "../svg/Logo.svelte";
   import NotificationIcon from "../svg/NotificationIcon.svelte";
   import SearchIcon from "../svg/SearchIcon.svelte";
   import HeaderWrapper from "./HeaderWrapper.svelte";
   import UserMenu from "./UserMenu.svelte";
+  import { myInfoState } from "@/store/main";
 
-  let useMenu: boolean = false;
+  let openMenu: boolean = false;
+
+  const clickOutSide = () => {
+    openMenu = false;
+  };
 </script>
 
 <HeaderWrapper let:hasScroll>
@@ -28,34 +34,44 @@
       <a href="/" use:link class:black={hasScroll}>멤버십</a>
     </div>
     <div class="right flex items-center ml-auto">
-      <div class="icon-wrapper ml-4" class:black={hasScroll}>
-        <SearchIcon />
-      </div>
-      <a
-        href="/"
-        class="icon-wrapper ml-2 relative"
-        use:link
-        class:black={hasScroll}
-      >
-        <NotificationIcon />
-        <div class="red-dot" />
-      </a>
-      <div class="relative ml-6 text-xs header-user-menu">
-        <div class="drop-down">
-          <div
-            class="username font-bold overflow-x-hidden whitespace-nowrap overflow-ellipsis"
-            class:text-black={hasScroll}
-          >
-            오민섭
+      {#if $myInfoState}
+        <div class="icon-wrapper ml-4" class:black={hasScroll}>
+          <SearchIcon />
+        </div>
+        <a
+          href="/"
+          class="icon-wrapper ml-2 relative"
+          use:link
+          class:black={hasScroll}
+        >
+          <NotificationIcon />
+          <div class="red-dot" />
+        </a>
+        <div class="relative ml-6 text-xs header-user-menu">
+          <div class="drop-down" on:click={() => (openMenu = !openMenu)}>
+            <div
+              class="username font-bold overflow-x-hidden whitespace-nowrap overflow-ellipsis"
+              class:text-black={hasScroll}
+            >
+              {$myInfoState.username}
+            </div>
+            {#if hasScroll}
+              <DownArrowIcon classNames="text-sm" fillColor="#282A35" />
+            {:else}
+              <DownArrowIcon classNames="text-sm" />
+            {/if}
           </div>
-          {#if hasScroll}
-            <DownArrowIcon classNames="text-sm" fillColor="#282A35" />
-          {:else}
-            <DownArrowIcon classNames="text-sm" />
+          {#if openMenu}
+            <UserMenu
+              myInfo={$myInfoState}
+              {openMenu}
+              on:clickOutSide={clickOutSide}
+            />
           {/if}
         </div>
-        <UserMenu />
-      </div>
+      {:else}
+        <div>정보</div>
+      {/if}
     </div>
   </div>
 </HeaderWrapper>

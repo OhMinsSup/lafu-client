@@ -5,6 +5,8 @@ import type {
   ContentRating,
 } from "../common/common.model";
 
+// carousel
+
 export interface CarouselModel {
   id: number;
   web_img: string;
@@ -17,6 +19,8 @@ export interface CarouselModel {
 }
 
 export type CarouseListResponse = APIResponse<CarouselModel[]>;
+
+// recommand
 
 export interface ItemList {
   id: number | string;
@@ -49,3 +53,65 @@ export interface RecommendModel {
 }
 
 export type RecommendListResponse = APIResponse<RecommendModel[]>;
+
+// my info
+
+export interface Devices {
+  app: App;
+  web: Web;
+}
+
+export interface App {
+  android: number;
+}
+
+export interface Web {
+  linux: number;
+  macintosh: number;
+  "windows nt 10.0": number;
+}
+
+export interface PremiumLevel {
+  level: number;
+  name: string;
+}
+
+export interface MyInfoModel {
+  id: number;
+  img: string;
+  last_login: Date;
+  username: string;
+  first_name: string;
+  last_name: string;
+  email: string;
+  verified_email: string;
+  date_joined: Date;
+  content: string | null;
+  url: string | null;
+  gender: string | null;
+  age: string | number | null;
+  birth_year: string | null;
+  country: string | null;
+  occupation: any;
+  lang: string | null;
+  is_email: boolean;
+  email_agreement_datetime: any;
+  is_agree_to_terms: boolean;
+  account_types: string[];
+  asset_point: number;
+  asset_period: any;
+  asset_limited_point: number;
+  is_staff: boolean;
+  asset_limited_point_end_date: any;
+  has_password: boolean;
+  certified: boolean;
+  is_adult: boolean;
+  has_pay_password: boolean;
+  referral_code: string;
+  cnt_referral_set: number;
+  free_trial: boolean;
+  premium_level: PremiumLevel;
+  devices: Devices;
+}
+
+export type MyInfoResponse = APIResponse<MyInfoModel>;

@@ -3585,6 +3585,11 @@ koa@^2.13.0:
     type-is "^1.6.16"
     vary "^1.1.2"
 
+lazysizes@^5.3.0:
+  version "5.3.0"
+  resolved "https://registry.yarnpkg.com/lazysizes/-/lazysizes-5.3.0.tgz#e31b40bc2500b45483251681c898bbb3ded744ac"
+  integrity sha512-h5i4WPc2FdeTOUHBcU7eyNnOULPCC90wVho+SQTZRh9Q8lev6P0yFwKq8rvfMdBvsKsCyDQBdqoBng9FYbcR/g==
+
 lighthouse-logger@^1.0.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/lighthouse-logger/-/lighthouse-logger-1.2.0.tgz#b76d56935e9c137e86a04741f6bb9b2776e886ca"
@@ -4910,6 +4915,11 @@ supports-color@^7.0.0, supports-color@^7.1.0:
   integrity sha512-qpCAvRl9stuOHveKsn7HncJRvv501qIacKzQlO/+Lwxc9+0q2wLyv4Dfvt80/DPn2pqOBsJdDiogXGR9+OvwRw==
   dependencies:
     has-flag "^4.0.0"
+
+svelte-actions@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/svelte-actions/-/svelte-actions-0.1.0.tgz#d8250b81b4002a7f2e82750341681f4d10893f69"
+  integrity sha512-V6V2oYCkXK/AgGL6yAQfUBM7Gmqd57qX3WNhX/s79h7Dpfi+rVtL+2tUYABB/QMGeBpWetpsfrbnXIXLhJAHfQ==
 
 svelte-hmr@^0.12.1:
   version "0.12.4"

@@ -9,3 +9,14 @@
 :global(.z-1) {
   z-index: 1;
 }
+
+:global(.blur-up) {
+  -webkit-filter: blur(5px);
+  filter: blur(5px);
+  transition: filter 400ms, -webkit-filter 400ms;
+}
+
+:global(.blur-up.lazyloaded) {
+  -webkit-filter: blur(0);
+  filter: blur(0);
+}

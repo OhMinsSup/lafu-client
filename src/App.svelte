@@ -1,17 +1,23 @@
 <script lang="ts">
   import "./TailwindStyles.svelte";
 
+  import { onMount } from "svelte";
   import { QueryClient, QueryClientProvider } from "@sveltestack/svelte-query";
   import Router from "svelte-spa-router";
 
   import routes from "@/pages";
   import MobileHeader from "~/components/base/MobileHeader.svelte";
-
-  import { browserWidth } from "./store/main";
   import DesktopHeader from "./components/base/DesktopHeader.svelte";
+
+  import { browserWidth, myInfoState } from "./store/main";
+  import myInfo from "./data/myinfo";
 
   let clientWidth = 0;
   const queryClient = new QueryClient();
+
+  onMount(() => {
+    myInfoState.set(myInfo as any);
+  });
 
   $: update(clientWidth);
 
